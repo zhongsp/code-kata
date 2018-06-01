@@ -1,3 +1,5 @@
 .vs/
+。vscode/
 **/Debug/**
 **/*.user
+**/*.out

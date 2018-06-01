@@ -12,6 +12,10 @@ int main(void) {
     append(3, L);
     append(4, L);
     print_list(L);
-    printf("length = %d", length(L));
+    delete(3, L);
+    print_list(L);
+    position pos = find(2, L);
+    printf("%d\n", pos->element);
+    printf("length = %d\n", length(L));
     getchar();
 }

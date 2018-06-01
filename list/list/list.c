@@ -4,6 +4,7 @@
 
 #include "list.h"
 
+/* In this implementation, a list has a header node. */
 
 /**
  * Empty a list.
@@ -59,13 +60,20 @@ position find(element_t X, list L)
     return NULL;
 }
 
-position last(list L)
+void delete(element_t X, list L)
 {
+    position pos = NULL;
     while (L->next) {
-        L = L->next;
+        if (L->next->element == X) {
+            pos = L->next;
+            L->next = pos->next;
+            break;
+        } else {
+            L = L->next;
+        }
     }
 
-    return L;
+    free(pos);
 }
 
 void append(element_t X, list L)
@@ -80,6 +88,15 @@ void append(element_t X, list L)
     }
 }
 
+position last(list L)
+{
+    while (L->next) {
+        L = L->next;
+    }
+
+    return L;
+}
+
 int length(list L)
 {
     int len = 0;
@@ -90,6 +107,7 @@ int length(list L)
     return len;
 }
 
+// helper
 void print_list(list L)
 {
     position pos = L->next;
