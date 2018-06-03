@@ -13,5 +13,6 @@ struct node
 
 polynomial add(polynomial p1, polynomial p2);
 polynomial multiply(polynomial p1, polynomial p2);
+void print(polynomial p);
 
 #endif  // !polynomial_h

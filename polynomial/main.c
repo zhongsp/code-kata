@@ -7,15 +7,24 @@
 
 int main(void)
 {
-  struct people {
-    int age;
-    char *name;
-  };
+  // 3X^5 + x^2
+  struct node m2 = { 1, 2, 0 };
+  struct node m1 = { 3, 5, &m2 };
 
-  struct people a = { 18, "Hello" };
-  struct people *b = malloc(sizeof(struct people));
+  // 2X^4 + 3X^2
+  struct node n2 = { 3, 2, 0 };
+  struct node n1 = { 2, 4, &n2 };
 
-  memcpy(b, &a, sizeof(a));
-  printf("%s\n", b->name);
+  polynomial p1 = &m1;
+  polynomial p2 = &n1;
+  polynomial p3 = add(p1, p2);
+
+  printf("p1 = ");
+  print(p1);
+  printf("p2 = ");
+  print(p2);
+  printf("p1 + p2 = ");
+  print(p3);
+
   return 0;
 }

@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "polynomial.h"
@@ -15,28 +16,25 @@ polynomial add(polynomial p1, polynomial p2)
 
     while(p1_cur || p2_cur) {
         node_ptr result_node = malloc(sizeof(struct node));
+        result_node->next = 0;
 
         if (p1_cur != 0 && p2_cur == 0) {
-            memcmp(result_node, p1_cur, sizeof(struct node));
+            memcpy(result_node, p1_cur, sizeof(struct node));
             p1_cur = p1_cur->next;
-            continue;
         }
 
         if (p1_cur == 0 && p2_cur != 0) {
-            memcmp(result_node, p2_cur, sizeof(struct node));
+            memcpy(result_node, p2_cur, sizeof(struct node));
             p2_cur = p2_cur->next;
-            continue;
         }
 
         if (p1_cur->exponent > p2_cur->exponent) {
-            memcmp(result_node, p1_cur, sizeof(struct node));
+            memcpy(result_node, p1_cur, sizeof(struct node));
             p1_cur = p1_cur->next;
-            continue;
 
         } else if (p1_cur->exponent < p2_cur->exponent) {
-            memcmp(result_node, p2_cur, sizeof(struct node));
+            memcpy(result_node, p2_cur, sizeof(struct node));
             p2_cur = p2_cur->next;
-            continue;
 
         } else {
             result_node->coefficient =
@@ -44,7 +42,6 @@ polynomial add(polynomial p1, polynomial p2)
             result_node->exponent = p1_cur->exponent;
             p1_cur = p1_cur->next;
             p2_cur = p2_cur->next;
-            continue;
         }
 
         // result_node
@@ -59,4 +56,17 @@ polynomial add(polynomial p1, polynomial p2)
     }
 
     return result;
+}
+
+void print(polynomial p)
+{
+    while(p) {
+        printf("%dX^%d", p->coefficient, p->exponent);
+        p=p->next;
+
+        if(p) {
+            printf(" + ");
+        }
+    }
+    printf("\n");
 }
