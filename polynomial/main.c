@@ -19,12 +19,23 @@ int main(void)
   polynomial p2 = &n1;
   polynomial p3 = add(p1, p2);
 
-  printf("p1 = ");
+  puts("***************");
   print(p1);
-  printf("p2 = ");
+  printf("+\n");
   print(p2);
-  printf("p1 + p2 = ");
+  printf("=\n");
   print(p3);
+
+  polynomial p4 = 0;
+  polynomial p5 = add(p1, p4);
+  
+  puts("***************");
+  print(p1);
+  printf("+\n");
+  print(p4);
+  printf("=\n");
+  print(p5);
+
 
   return 0;
 }

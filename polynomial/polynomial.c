@@ -18,30 +18,32 @@ polynomial add(polynomial p1, polynomial p2)
         node_ptr result_node = malloc(sizeof(struct node));
         result_node->next = 0;
 
-        if (p1_cur != 0 && p2_cur == 0) {
-            memcpy(result_node, p1_cur, sizeof(struct node));
-            p1_cur = p1_cur->next;
-        }
+        if (p1_cur == 0 || p2_cur == 0) {
+            if (p1_cur != 0 && p2_cur == 0) {
+                memcpy(result_node, p1_cur, sizeof(struct node));
+                p1_cur = p1_cur->next;
 
-        if (p1_cur == 0 && p2_cur != 0) {
-            memcpy(result_node, p2_cur, sizeof(struct node));
-            p2_cur = p2_cur->next;
-        }
-
-        if (p1_cur->exponent > p2_cur->exponent) {
-            memcpy(result_node, p1_cur, sizeof(struct node));
-            p1_cur = p1_cur->next;
-
-        } else if (p1_cur->exponent < p2_cur->exponent) {
-            memcpy(result_node, p2_cur, sizeof(struct node));
-            p2_cur = p2_cur->next;
+            } else if (p1_cur == 0 && p2_cur != 0) {
+                memcpy(result_node, p2_cur, sizeof(struct node));
+                p2_cur = p2_cur->next;
+            }
 
         } else {
-            result_node->coefficient =
-                p1_cur->coefficient + p2_cur->coefficient;
-            result_node->exponent = p1_cur->exponent;
-            p1_cur = p1_cur->next;
-            p2_cur = p2_cur->next;
+            if (p1_cur->exponent > p2_cur->exponent) {
+                memcpy(result_node, p1_cur, sizeof(struct node));
+                p1_cur = p1_cur->next;
+
+            } else if (p1_cur->exponent < p2_cur->exponent) {
+                memcpy(result_node, p2_cur, sizeof(struct node));
+                p2_cur = p2_cur->next;
+
+            } else {
+                result_node->coefficient =
+                    p1_cur->coefficient + p2_cur->coefficient;
+                result_node->exponent = p1_cur->exponent;
+                p1_cur = p1_cur->next;
+                p2_cur = p2_cur->next;
+            }
         }
 
         // result_node
