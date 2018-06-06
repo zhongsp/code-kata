@@ -36,6 +36,15 @@ int main(void)
   printf("=\n");
   print(p5);
 
+  polynomial p6 = multiply(p1, p1);
+  
+  puts("***************");
+  print(p1);
+  printf("*\n");
+  print(p1);
+  printf("=\n");
+  print(p6);
+
 
   return 0;
 }

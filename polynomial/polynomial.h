@@ -13,6 +13,7 @@ struct node
 
 polynomial add(polynomial p1, polynomial p2);
 polynomial multiply(polynomial p1, polynomial p2);
+polynomial combine_like_terms(polynomial p);
 void print(polynomial p);
 
 #endif  // !polynomial_h
