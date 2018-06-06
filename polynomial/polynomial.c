@@ -99,9 +99,31 @@ polynomial multiply(polynomial p1, polynomial p2)
     return result;
 }
 
-polynomial combine_like_terms(polynomial p)
+void combine_like_terms(polynomial p)
 {
-    
+    node_ptr cur = p;
+
+    node_ptr pre_check = 0;
+    node_ptr check = 0;
+
+    while (cur) {
+        pre_check = cur;
+        check = pre_check->next;
+
+        while (check) {
+            if (cur->exponent == check->exponent) {
+                cur->coefficient += check->coefficient;
+                pre_check->next = check->next;
+                free(check);
+                check = pre_check->next;
+            } else {
+                pre_check = check;
+                check = pre_check->next;
+            }
+        }
+
+        cur = cur->next;
+    }
 }
 
 void print(polynomial p)
