@@ -64,11 +64,12 @@ void dispose_stack(stack s)
     free(s);
 }
 
-void print_int_stack(stack s)
+void print_stack_int(stack s)
 {
     node_ptr cur = s->next;
     while (cur) {
         printf("%d -> ", cur->element);
+        cur = cur->next;
     }
-    printf("NULL");
+    puts("NULL");
 }
