@@ -3,7 +3,7 @@
 
 #include "list.h"
 
-#define element_t int
+
 int main(void) {
     //printf("%d", Node);
     list L = make_empty(NULL);
@@ -17,5 +17,4 @@ int main(void) {
     position pos = find(2, L);
     printf("%d\n", pos->element);
     printf("length = %d\n", length(L));
-    getchar();
 }
