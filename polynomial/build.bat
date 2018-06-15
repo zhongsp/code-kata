@@ -1,3 +1,3 @@
-cl /W4 *.c
+cl /W4 /nologo *.c
 
 main.exe
