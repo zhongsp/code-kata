@@ -1,6 +1,7 @@
 #include <stdlib.h>
+#include <stdio.h>
 
-#include "queue.h";
+#include "queue.h"
 
 
 struct queue_record {
@@ -19,6 +20,7 @@ queue create_queue(int maxElements)
     q->size = 0;
     q->capacity = maxElements;
     q->array = malloc(sizeof(ELEMENT_TYPE) * maxElements);
+    return q;
 }
 
 void dispose_queue(queue q)
@@ -55,4 +57,22 @@ void dequeue (queue q)
     if (++q->front >= q->capacity) {
         q->front = 0;
     }
+}
+
+void print_queue(queue q)
+{
+    printf("Capacity: %d\n", q->capacity);
+    printf("Size: %d\n", q->size);
+    printf("Front: %d\n", q->front);
+    printf("Rear: %d\n", q->rear);
+}
+
+void print_head(queue q)
+{
+    printf("Head: %d\n", q->array[q->front]);
+}
+
+void print_tail(queue q)
+{
+    printf("Tail: %d\n", q->array[q->rear]);
 }
