@@ -1,3 +1,6 @@
+#include <stdio.h>
+
+
 /**
  * （二叉）最大堆，数组实现（数组索引从0开始）。
  */
@@ -39,4 +42,12 @@ void max_heapify(int heap[], int heap_size, int i)
     heap[largest] = temp;
     max_heapify(heap, heap_size, largest);
   }
+}
+
+void print_heap(int heap[], int heap_size)
+{
+  for (int i = 0; i < heap_size; i++) {
+    printf("%d ", heap[i]);
+  }
+  printf("\n");
 }

@@ -1,18 +1,19 @@
-#include <stdio.h>
-
 #include "heap.h"
 
 int main(void)
 {
 
-  int heap[] = { 1, 4, 5, 2, 3, 2, 3 };
-  int heap_size = 7;
+  int heap0[] = { 1, 4, 5, 2, 3, 2, 3 };
+  int heap_size0 = 7;
+  max_heapify(heap0, heap_size0, 0);
+  print_heap(heap0, heap_size0);
+  // output: 5 4 3 2 3 2 1
 
-  max_heapify(heap, heap_size, 0);
+  int heap1[] = { 16, 4, 10, 14, 7, 9, 3, 2, 8, 1 };
+  int heap_size1 = 10;
+  max_heapify(heap1, heap_size1, 1);
+  print_heap(heap1, heap_size1);
+  // output: 16 14 10 8 7 9 3 2 4 1
 
-  for (int i = 0; i < heap_size; i++) {
-    printf("%d ", heap[i]);
-  }
-  
   return 0;
 }
