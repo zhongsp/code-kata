@@ -9,7 +9,7 @@ const right = (i: number) => 2 * i + 1;
 // 父结点索引
 const parent = (i: number) => Math.floor(i / 2);
 
-interface Heap {
+export interface Heap {
   size: number;
   elements: number[];
 }
@@ -51,12 +51,3 @@ export function maxHeapify(heap: Heap, i: number): void {
     maxHeapify(heap, largest);
   }
 }
-
-const heap = {
-  elements: [-Infinity, 1, 4, 5, 2, 3, 2, 3],
-  size: 7
-};
-
-maxHeapify(heap, 1);
-
-printHeap(heap);
