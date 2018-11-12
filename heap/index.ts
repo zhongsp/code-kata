@@ -6,4 +6,4 @@ const heap: h.Heap = {
 };
 
 h.maxHeapify(heap, 1);
-h.printHeap(heap);
+h.print(heap);
