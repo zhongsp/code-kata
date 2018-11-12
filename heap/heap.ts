@@ -42,19 +42,28 @@ export function maxHeapify(heap: Heap, i: number): void {
   }
 }
 
+export function buildMaxHeap(heap: Heap): void {
+  for(let i = Math.floor(heap.size / 2); i > 0; i--) {
+    maxHeapify(heap, i);
+  }
+}
+
+/**
+ * 打印树形结构的堆。
+ */
 export function print(heap: Heap): void {
   const { size, elements } = heap;
   const height = getHeapHeight(heap);
 
-  let output: any[][] = Array[height];
-  output[height - 1] = buildDeepestTier();
+  let output: any[][] = Array(height + 1);
+  output[height] = buildDeepestTier();
 
   for(let i = height - 1; i >= 0; i--) {
     const theNextTier = output[i + 1];
     let result = Array(size).fill(' ');
     
     let startIndex = getMaxHeapElementsWithHeight(i - 1) + 1;
-    const source = heap.elements.slice(startIndex, startIndex + getElementsOnHeight(i) + 1);
+    const source = elements.slice(startIndex, startIndex + getElementsOnHeight(i) + 1);
     let pos = 0;
 
     let stack = [];
@@ -72,14 +81,18 @@ export function print(heap: Heap): void {
         }
       }
     });
-  }
 
-  console.log(output);
+    output[i] = result;
+  }
+  
+  output.forEach(out => {
+    console.log(out.join(''));
+  })
 
   function buildDeepestTier() {
     let result = Array(heap.size).fill(' ');
     let startIndex = getMaxHeapElementsWithHeight(height - 1) + 1;
-    let source = heap.elements.slice(startIndex, heap.size + 1);
+    let source = elements.slice(startIndex, heap.size + 1);
     let formatSource = source.join(' ').split('');
 
     for(let i = 0; i < heap.size; i++) {

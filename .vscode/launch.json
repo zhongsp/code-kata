@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/heap/heap.ts",
+      "program": "${workspaceFolder}/heap/index.js",
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ]
