@@ -8,3 +8,4 @@
 **/*.exe
 **/*.js
 node_modules/
+*.js.map

@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "sourceMap": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es6",
