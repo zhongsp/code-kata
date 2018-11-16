@@ -49,21 +49,48 @@ export function buildMaxHeap(heap: Heap): void {
 }
 
 /**
- * 打印树形结构的堆。
+ * 结点的高度为结点到最深的叶子结点的边的条数。
+ * 堆的高度定义为根结点的高度。
+ * 只有根结点的堆的高度为：0。
+ * 空堆的高度为：-1。
+ */
+export function getHeapHeight(heap: Heap): number {
+  return (heap.size <= 0)
+    ? -1
+    : Math.floor(Math.log2(heap.size));
+}
+
+/**
+ * 结点的深度为根结点到此结点的边的条数。
+ * 获取给定深度的堆可以容纳的最多结点数。
+ * 每层最多结点数是等比数列。
+ */
+export function getMaxNodeCountWithDepth(depth: number): number {
+  return 2 ** (depth + 1) - 1;
+}
+
+export function getMaxNodeCountOnDepth(depth: number): number {
+  return 2 ** depth;
+}
+
+/**
+ * 打印堆的树形结构。
  */
 export function print(heap: Heap): void {
   const { size, elements } = heap;
   const height = getHeapHeight(heap);
+  const lineWidth = getMaxNodeCountWithDepth(height);
 
   let output: any[][] = Array(height + 1);
-  output[height] = buildDeepestTier();
+  output[height] = buildDeepestLayer();
 
   for(let i = height - 1; i >= 0; i--) {
     const theNextTier = output[i + 1];
-    let result = Array(size).fill(' ');
-    
-    let startIndex = getMaxHeapElementsWithHeight(i - 1) + 1;
-    const source = elements.slice(startIndex, startIndex + getElementsOnHeight(i) + 1);
+    let result = Array(lineWidth).fill(' ');
+
+    const startIndex = getMaxNodeCountWithDepth(i - 1) + 1;
+    const endIndex = startIndex + getMaxNodeCountOnDepth(i);
+    const source = elements.slice(startIndex, endIndex);
     let pos = 0;
 
     let stack = [];
@@ -84,18 +111,18 @@ export function print(heap: Heap): void {
 
     output[i] = result;
   }
-  
+
   output.forEach(out => {
     console.log(out.join(''));
   })
 
-  function buildDeepestTier() {
-    let result = Array(heap.size).fill(' ');
-    let startIndex = getMaxHeapElementsWithHeight(height - 1) + 1;
-    let source = elements.slice(startIndex, heap.size + 1);
+  function buildDeepestLayer() {
+    let result = Array(lineWidth).fill(' ');
+    let startIndex = getMaxNodeCountWithDepth(height - 1) + 1;
+    let source = elements.slice(startIndex, size + 1);
     let formatSource = source.join(' ').split('');
 
-    for(let i = 0; i < heap.size; i++) {
+    for(let i = 0; i < lineWidth; i++) {
       if (formatSource[i] !== undefined) {
         result[i] = formatSource[i];
       } else {
@@ -107,24 +134,4 @@ export function print(heap: Heap): void {
 
     return result;
   }
-}
-
-/**
- * 堆的高度定义为根结点的高度。
- * 根结点的高度为根结点到叶子结点的最长边的条数。
- */
-function getHeapHeight(heap: Heap): number {
-  return Math.floor(Math.log2(heap.size));
-}
-
-/**
- * 获取给定高度的堆可以拥有的最多结点数。
- * 每层最多结点数是等比数列。
- */
-function getMaxHeapElementsWithHeight(height: number): number {
-  return 2 ** (height + 1) - 1;
-}
-
-function getElementsOnHeight(height: number): number {
-  return 2 ** height;
 }
