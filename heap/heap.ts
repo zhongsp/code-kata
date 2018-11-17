@@ -81,57 +81,50 @@ export function print(heap: Heap): void {
   const height = getHeapHeight(heap);
   const lineWidth = getMaxNodeCountWithDepth(height);
 
-  let output: any[][] = Array(height + 1);
-  output[height] = buildDeepestLayer();
+  let result: any[][] = Array(height + 1);
+  result[height] = buildDeepestLayer();
 
   for(let i = height - 1; i >= 0; i--) {
-    const theNextTier = output[i + 1];
-    let result = Array(lineWidth).fill(' ');
-
+    let line = Array(lineWidth).fill(' ');
     const startIndex = getMaxNodeCountWithDepth(i - 1) + 1;
     const endIndex = startIndex + getMaxNodeCountOnDepth(i);
     const source = elements.slice(startIndex, endIndex);
+    const theNextLine = result[i + 1];
     let pos = 0;
-
     let stack = [];
-
-    theNextTier.forEach((element, index) => {
+    theNextLine.forEach((element, index) => {
       if (element !== ' ') {
         stack.push(index);
-
         if (stack.length === 2) {
           let end = stack.pop();
           let start = stack.pop();
           const insertIdx = (start + end) / 2;
-          result[insertIdx] = source[pos];
+          line[insertIdx] = source[pos];
           pos++
         }
       }
     });
-
-    output[i] = result;
+    result[i] = line;
   }
 
-  output.forEach(out => {
+  result.forEach(out => {
     console.log(out.join(''));
   })
 
   function buildDeepestLayer() {
-    let result = Array(lineWidth).fill(' ');
+    let line = Array(lineWidth).fill(' ');
     let startIndex = getMaxNodeCountWithDepth(height - 1) + 1;
     let source = elements.slice(startIndex, size + 1);
-    let formatSource = source.join(' ').split('');
-
+    let sourceLine = source.join(' ').split('');
     for(let i = 0; i < lineWidth; i++) {
-      if (formatSource[i] !== undefined) {
-        result[i] = formatSource[i];
+      if (sourceLine[i] !== undefined) {
+        line[i] = sourceLine[i];
       } else {
         if (i % 2 === 0) {
-          result[i] = null;
+          line[i] = null;
         }
       }
     }
-
-    return result;
+    return line;
   }
 }
