@@ -42,6 +42,9 @@ export function maxHeapify(heap: Heap, i: number): void {
   }
 }
 
+/**
+ * Build a max heap from an Array.
+ */
 export function buildMaxHeap(heap: Heap): void {
   for(let i = Math.floor(heap.size / 2); i > 0; i--) {
     maxHeapify(heap, i);
@@ -107,6 +110,8 @@ export function print(heap: Heap): void {
     result[i] = line;
   }
 
+  console.log('************');
+  console.log(heap.elements);
   result.forEach(out => {
     console.log(out.join(''));
   })
