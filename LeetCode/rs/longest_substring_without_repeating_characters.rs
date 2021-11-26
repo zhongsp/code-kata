@@ -5,35 +5,45 @@ use std::collections::HashMap;
 struct Solution();
 impl Solution {
     pub fn length_of_longest_substring(s: String) -> i32 {
+        // Not sure if other ways to index chars in a String
         let s: Vec<char> = s.chars().collect::<Vec<char>>();
         let mut max: usize = 0;
         let mut start: usize = 0;
         let mut end: usize = 0;
-        let mut db: HashMap<char, usize> = HashMap::new();
+
+        // HashSet is another choice
+        let mut char_index_map: HashMap<char, usize> = HashMap::new();
 
         loop {
             if end >= s.len() {
-                return if db.len() > max {
-                    db.len() as i32
+                return if char_index_map.len() > max {
+                    char_index_map.len() as i32
                 } else {
                     max as i32
                 };
             }
 
+            // index into string
             let key = &s[end];
-            if db.contains_key(key) {
-                let pre = *db.get(key).unwrap();
+            if char_index_map.contains_key(key) {
+                let pre = *char_index_map.get(key).unwrap();
 
-                if db.len() > max {
-                    max = db.len();
+                // save the max length
+                if char_index_map.len() > max {
+                    max = char_index_map.len();
                 }
+
+                // cleanup HashMap for the next finding
                 for i in start..pre {
-                    db.remove(&s[i]).unwrap();
+                    char_index_map.remove(&s[i]).unwrap();
                 }
-                *db.get_mut(key).unwrap() = end;
+
+                // update value in HashMap
+                *char_index_map.get_mut(key).unwrap() = end;
+
                 start = pre + 1;
             } else {
-                db.insert(*key, end);
+                char_index_map.insert(*key, end);
             }
 
             end += 1;
@@ -81,11 +91,6 @@ mod test {
 
     #[test]
     fn length_of_longest_substring6() {
-        assert_eq!(Solution::length_of_longest_substring(String::from(" ")), 1)
-    }
-
-    #[test]
-    fn length_of_longest_substring7() {
         assert_eq!(
             Solution::length_of_longest_substring(String::from("aabaab!ab")),
             3
