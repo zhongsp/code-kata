@@ -5,13 +5,41 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "type": "lldb",
       "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/heap/index.js",
-      "outFiles": [
-        "${workspaceFolder}/**/*.js"
-      ]
+      "name": "Debug executable 'leetcode'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=leetcode",
+          "--package=rust-starter"
+        ],
+        "filter": {
+          "name": "leetcode",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'leetcode'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=leetcode",
+          "--package=rust-starter"
+        ],
+        "filter": {
+          "name": "leetcode",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
