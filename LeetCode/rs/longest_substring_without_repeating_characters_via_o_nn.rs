@@ -3,6 +3,8 @@
 use std::collections::HashMap;
 
 struct Solution();
+
+#[allow(dead_code)]
 impl Solution {
     pub fn length_of_longest_substring(s: String) -> i32 {
         // Not sure if other ways to index chars in a String

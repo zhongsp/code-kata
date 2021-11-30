@@ -20,6 +20,8 @@ impl ListNode {
 }
 
 struct Solution();
+
+#[allow(dead_code)]
 impl Solution {
     pub fn add_two_numbers(
         l1: Option<Box<ListNode>>,
