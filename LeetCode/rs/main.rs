@@ -10,7 +10,6 @@ mod longest_palindromic_substring_via_o_nn;
 
 mod zigzag_conversion_via_o_n;
 
-mod reverse_integer_via_o_n;
 mod reverse_integer_via_o_n_api;
 mod reverse_integer_via_o_n_math;
 
