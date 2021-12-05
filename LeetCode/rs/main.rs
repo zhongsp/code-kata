@@ -15,4 +15,6 @@ mod reverse_integer_via_o_n_math;
 
 mod string_to_integer_atoi_via_o_n;
 
+mod palindrome_number_via_o_n;
+
 fn main() {}
