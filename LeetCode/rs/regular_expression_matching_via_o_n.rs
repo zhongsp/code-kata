@@ -73,11 +73,13 @@ impl Solution {
                                         p_stack.iter().rev().collect::<String>(),
                                     );
                             }
+
+                            continue;
                         } else {
                             p_stack.push(pattern_next);
                         }
 
-                        continue;
+                        
                     }
 
                     if s_stack.pop() != Some(pattern) {
