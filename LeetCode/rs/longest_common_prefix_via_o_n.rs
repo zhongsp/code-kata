@@ -1,3 +1,5 @@
+//! https://leetcode-cn.com/problems/longest-common-prefix/
+
 use std::cmp;
 
 struct Solution;
