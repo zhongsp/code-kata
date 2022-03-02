@@ -1,5 +1,6 @@
 //! https://leetcode-cn.com/problems/3sum/
 
+use std::cmp;
 use std::collections::HashMap;
 
 struct Solution();
@@ -12,12 +13,12 @@ impl Solution {
         }
 
         let mut result: Vec<Vec<i32>> = vec![];
-        let mut table: HashMap<i32, i32> = HashMap::new();
+        let mut table: HashMap<String, bool> = HashMap::new();
 
         let mut start = 0;
         let mut end = nums.len();
         loop {
-            if end - start < 2 {
+            if start >= end {
                 break;
             }
 
@@ -33,11 +34,35 @@ impl Solution {
     fn sub_three_sum(
         nums: &Vec<i32>,
         result: &mut Vec<Vec<i32>>,
-        table: &mut HashMap<i32, i32>,
+        table: &mut HashMap<String, bool>,
         start: usize,
         end: usize,
     ) {
-        // todo
+        let first = nums[start];
+        let last = nums[end - 1];
+        let mut index = start + 1;
+
+        loop {
+            if index >= end - 1 {
+                break;
+            }
+
+            if first + last + nums[index] == 0 {
+                let pair = Self::sort(first, last, nums[index]);
+                if !table.contains_key(&pair.1) {
+                    table.insert(pair.1, true);
+                    result.push(pair.0);
+                }
+            }
+
+            index += 1;
+        }
+    }
+
+    fn sort(x: i32, y: i32, z: i32) -> (Vec<i32>, String) {
+        let min = cmp::min(x, cmp::min(y, z));
+        let max = cmp::max(x, cmp::max(y, z));
+        (vec![min, 0 - min - max, max], format!("{},{}", min, max))
     }
 }
 
