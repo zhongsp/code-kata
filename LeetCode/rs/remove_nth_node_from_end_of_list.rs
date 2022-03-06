@@ -17,31 +17,12 @@ impl ListNode {
 #[allow(dead_code)]
 impl Solution {
     pub fn remove_nth_from_end(head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
-        let mut len = 0;
-        let mut list = &head;
-        while let Some(node) = list {
-            len += 1;
-            list = &node.next;
-        }
+        let dummy = Some(Box::new(ListNode { next: head, val: 0 }));
 
-        let index_to_remove = len - n;
+        let fast: &Option<Box<ListNode>> = &dummy;
+        let slow: &Option<Box<ListNode>> = &dummy;
 
-        if index_to_remove == 0 {
-            return None;
-        }
-
-        let mut head = head;
-        let mut prev = &mut head;
-
-        for _ in 1..index_to_remove {
-            prev = &mut (prev.as_mut().unwrap().next);
-        }
-
-        if index_to_remove == (len - 1) {
-            prev.as_mut().unwrap().next = None;
-        } else {
-            prev.as_mut().unwrap().next = prev.as_mut().unwrap().next.as_mut().unwrap().next.take();
-        }
+        // todo
 
         head
     }
