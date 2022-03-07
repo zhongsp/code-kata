@@ -56,6 +56,31 @@ impl Solution {
 
         dummy.unwrap().next
     }
+
+    // 计算链表长度
+    pub fn remove_nth_from_end_calc_length(
+        head: Option<Box<ListNode>>,
+        n: i32,
+    ) -> Option<Box<ListNode>> {
+        let mut len = 0;
+        let mut node = &head;
+        while node.is_some() {
+            len += 1;
+            node = &node.as_ref().unwrap().next;
+        }
+
+        let index_to_remove = len - n;
+
+        let mut dummy = Some(Box::new(ListNode { next: head, val: 0 }));
+        let mut node = &mut dummy;
+        for _ in 0..index_to_remove {
+            node = &mut node.as_mut().unwrap().next;
+        }
+
+        node.as_mut().unwrap().next = node.as_mut().unwrap().next.as_mut().unwrap().next.take();
+
+        dummy.unwrap().next
+    }
 }
 
 #[cfg(test)]
