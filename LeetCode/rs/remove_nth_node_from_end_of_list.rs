@@ -41,11 +41,7 @@ impl Solution {
         }
 
         // 修改链表
-        if n == 1 {
-            slow.as_mut().unwrap().next = None;
-        } else {
-            slow.as_mut().unwrap().next = slow.as_mut().unwrap().next.as_mut().unwrap().next.take();
-        }
+        slow.as_mut().unwrap().next = slow.as_mut().unwrap().next.as_mut().unwrap().next.take();
 
         dummy.unwrap().next
     }
