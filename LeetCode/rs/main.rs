@@ -43,4 +43,6 @@ mod merge_two_sorted_lists;
 
 mod generate_parentheses;
 
+mod merge_k_sorted_lists;
+
 fn main() {}
