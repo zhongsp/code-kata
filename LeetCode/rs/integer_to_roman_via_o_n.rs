@@ -8,6 +8,7 @@
 
 struct Solution();
 
+#[allow(dead_code)]
 impl Solution {
     pub fn int_to_roman(num: i32) -> String {
         let mut result = vec![];

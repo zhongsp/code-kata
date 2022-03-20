@@ -6,6 +6,7 @@
 
 struct Solution();
 
+#[allow(dead_code)]
 impl Solution {
     pub fn my_atoi(s: String) -> i32 {
         let mut x = 0i32;

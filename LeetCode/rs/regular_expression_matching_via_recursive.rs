@@ -10,6 +10,7 @@
 
 struct Solution();
 
+#[allow(dead_code)]
 impl Solution {
     pub fn to_stack(s: &str) -> Vec<char> {
         s.chars().rev().collect::<Vec<char>>()

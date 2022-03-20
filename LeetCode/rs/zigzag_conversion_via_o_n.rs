@@ -25,6 +25,7 @@ use std::cmp;
 
 struct Solution();
 
+#[allow(dead_code)]
 impl Solution {
     pub fn convert(s: String, num_rows: i32) -> String {
         let mut rows = vec![];

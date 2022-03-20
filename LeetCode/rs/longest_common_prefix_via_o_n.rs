@@ -4,6 +4,7 @@ use std::cmp;
 
 struct Solution;
 
+#[allow(dead_code)]
 impl Solution {
     pub fn longest_common_prefix(strs: Vec<String>) -> String {
         let mut result = strs[0].clone();

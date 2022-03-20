@@ -10,6 +10,7 @@
 
 struct Solution();
 
+#[allow(dead_code)]
 impl Solution {
     pub fn reverse(x: i32) -> i32 {
         let mut x = x;

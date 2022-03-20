@@ -57,6 +57,8 @@
 use std::cmp;
 
 pub struct Solution();
+
+#[allow(dead_code)]
 impl Solution {
   pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
     // 使 nums1 为较短的数组，然后对 nums1 进行二分查找可将时间复杂度进一步降低
