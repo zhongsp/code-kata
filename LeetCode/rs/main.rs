@@ -47,4 +47,6 @@ mod merge_k_sorted_lists;
 
 mod swap_nodes_in_pairs;
 
+mod remove_duplicates_from_sorted_array;
+
 fn main() {}
