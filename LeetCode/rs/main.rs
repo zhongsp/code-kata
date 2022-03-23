@@ -53,4 +53,6 @@ mod remove_element;
 
 mod implement_strstr;
 
+mod divide_two_integers;
+
 fn main() {}
