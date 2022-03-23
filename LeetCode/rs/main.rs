@@ -51,4 +51,6 @@ mod remove_duplicates_from_sorted_array;
 
 mod remove_element;
 
+mod implement_strstr;
+
 fn main() {}
