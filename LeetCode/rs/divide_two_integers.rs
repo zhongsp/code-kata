@@ -1,4 +1,6 @@
 //! https://leetcode-cn.com/problems/divide-two-integers/
+//! 
+//! 不断翻倍并计数，以得到商；注意各种边界处理。
 
 struct Solution;
 
