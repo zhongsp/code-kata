@@ -55,4 +55,6 @@ mod implement_strstr;
 
 mod divide_two_integers;
 
+mod substring_with_concatenation_of_all_words;
+
 fn main() {}
