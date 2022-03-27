@@ -57,4 +57,6 @@ mod divide_two_integers;
 
 mod substring_with_concatenation_of_all_words;
 
+mod longest_valid_parentheses;
+
 fn main() {}
