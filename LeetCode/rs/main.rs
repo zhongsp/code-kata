@@ -59,4 +59,6 @@ mod substring_with_concatenation_of_all_words;
 
 mod longest_valid_parentheses;
 
+mod search_in_rotated_sorted_array;
+
 fn main() {}
