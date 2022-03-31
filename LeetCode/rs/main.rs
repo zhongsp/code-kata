@@ -61,4 +61,6 @@ mod longest_valid_parentheses;
 
 mod search_in_rotated_sorted_array;
 
+mod find_first_and_last_position_of_element_in_sorted_array;
+
 fn main() {}
