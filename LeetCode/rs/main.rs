@@ -67,4 +67,6 @@ mod search_insert_position;
 
 mod valid_sudoku;
 
+mod sudoku_solver;
+
 fn main() {}
