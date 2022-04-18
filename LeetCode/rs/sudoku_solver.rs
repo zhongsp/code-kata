@@ -8,16 +8,17 @@ struct Solution;
 impl Solution {
     pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
         let init = &board.clone();
-
         Self::fill_current_cell(board, 0, 0, init);
     }
 
     fn fill_current_cell(board: &mut Vec<Vec<char>>, x: usize, y: usize, init: &Vec<Vec<char>>) {
         if Self::is_cell_fixed(init, x, y) {
-            Self::fill_next_cell(board, x, y, init)
+            if Self::is_valid_sudoku(board) {
+                Self::fill_next_cell(board, x, y, init);
+            } else {
+                Self::fill_prev_cell(board, x, y, init);
+            }
         } else {
-            let value = board[x][y];
-            // let start = if value == '.' { '1' } else { value };
             for z in '1'..='9' {
                 board[x][y] = z;
                 if Self::is_valid_sudoku(board) {
@@ -25,6 +26,7 @@ impl Solution {
                     return;
                 }
             }
+            board[x][y] = '.';
             Self::fill_prev_cell(board, x, y, init);
         }
     }
@@ -39,7 +41,11 @@ impl Solution {
             Self::fill_prev_cell(board, x, y, init)
         } else {
             let value = board[x][y];
-            let start = if value == '.' { '1' } else { char::from_u32(value as u32 + 1).unwrap() };
+            let start = if value == '.' {
+                '1'
+            } else {
+                char::from_u32(value as u32 + 1).unwrap()
+            };
             for z in start..='9' {
                 board[x][y] = z;
                 if Self::is_valid_sudoku(board) {
@@ -47,14 +53,15 @@ impl Solution {
                     return;
                 }
             }
+            board[x][y] = '.';
             Self::fill_prev_cell(board, x, y, init);
         }
     }
 
     fn fill_prev_cell(board: &mut Vec<Vec<char>>, x: usize, y: usize, init: &Vec<Vec<char>>) {
         if y == 0 {
-            if x != 0 {
-                Self::fill_current_cell_for_prev(board, x - 1, 0, init);
+            if x > 0 {
+                Self::fill_current_cell_for_prev(board, x - 1, 8, init);
             }
         } else {
             Self::fill_current_cell_for_prev(board, x, y - 1, init);
@@ -63,7 +70,7 @@ impl Solution {
 
     fn fill_next_cell(board: &mut Vec<Vec<char>>, x: usize, y: usize, init: &Vec<Vec<char>>) {
         if y == 8 {
-            if x != 8 {
+            if x < 8 {
                 Self::fill_current_cell(board, x + 1, 0, init);
             }
         } else {
