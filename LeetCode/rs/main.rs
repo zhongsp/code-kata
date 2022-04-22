@@ -69,4 +69,6 @@ mod valid_sudoku;
 
 mod sudoku_solver;
 
+mod count_and_say;
+
 fn main() {}
