@@ -71,4 +71,6 @@ mod sudoku_solver;
 
 mod count_and_say;
 
+mod combination_sum;
+
 fn main() {}
