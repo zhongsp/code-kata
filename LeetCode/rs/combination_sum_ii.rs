@@ -9,8 +9,17 @@ impl Solution {
         candidates.sort();
 
         let mut res = vec![];
+        let mut last: Option<i32> = None;
 
         for i in 0..candidates.len() {
+            let current = candidates[i];
+
+            if Some(current) == last {
+                continue;
+            } else {
+                last = Some(current);
+            }
+
             if candidates[i] <= target {
                 res.extend(Self::inner(&candidates, target, i));
             } else {
@@ -26,7 +35,14 @@ impl Solution {
 
         if x < target {
             let mut res = vec![];
+            let mut last: Option<i32> = None;
             for i in (index + 1)..candidates.len() {
+                let current = candidates[i];
+                if Some(current) == last {
+                    continue;
+                } else {
+                    last = Some(current);
+                }
                 res.extend(
                     Self::inner(candidates, target - x, i)
                         .into_iter()
@@ -52,6 +68,14 @@ mod test {
 
     #[test]
     fn combination_sum2_0() {
+        assert_eq!(
+            Solution::combination_sum2(vec![2, 5, 2, 1, 2], 5),
+            vec![vec![1, 2, 2], vec![5]]
+        )
+    }
+
+    #[test]
+    fn combination_sum2_1() {
         assert_eq!(
             Solution::combination_sum2(vec![10, 1, 2, 7, 6, 1, 5], 8),
             vec![vec![1, 1, 6], vec![1, 2, 5], vec![1, 7], vec![2, 6],]
