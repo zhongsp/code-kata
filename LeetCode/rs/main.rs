@@ -75,4 +75,6 @@ mod combination_sum;
 
 mod combination_sum_ii;
 
+mod first_missing_positive;
+
 fn main() {}
