@@ -77,4 +77,6 @@ mod combination_sum_ii;
 
 mod first_missing_positive;
 
+mod trapping_rain_water;
+
 fn main() {}
