@@ -4,7 +4,46 @@ struct Solution();
 
 #[allow(dead_code)]
 impl Solution {
+    // O(n)
     pub fn trap(height: Vec<i32>) -> i32 {
+        let mut x: i32 = 0;
+        let mut ans = 0;
+        let mut par = 0;
+
+        for i in 0..height.len() {
+            let cur = height[i];
+
+            if cur >= x {
+                ans += par;
+                par = 0;
+                x = cur;
+            } else {
+                par += x - cur;
+            }
+        }
+
+        let mut xx: i32 = 0;
+        let mut parpar = 0;
+        for i in (0..height.len()).rev() {
+            let cur = height[i];
+
+            if cur >= xx {
+                ans += parpar;
+                parpar = 0;
+                xx = cur;
+            } else {
+                parpar += xx - cur;
+            }
+
+            if cur == x {
+                break;
+            }
+        }
+
+        ans
+    }
+
+    pub fn trap_recursive(height: Vec<i32>) -> i32 {
         let mut x: i32 = -1;
         let mut y: i32 = -1;
         let mut ans = 0;
@@ -25,7 +64,7 @@ impl Solution {
         }
 
         if x >= 0 {
-            ans += Self::trap(
+            ans += Self::trap_recursive(
                 height
                     .iter()
                     .map(|&v| if v >= 1 { v - 1 } else { 0 })
