@@ -79,4 +79,6 @@ mod first_missing_positive;
 
 mod trapping_rain_water;
 
+mod multiply_strings;
+
 fn main() {}
