@@ -39,7 +39,10 @@ impl Solution {
                 b'*' => {
                     if let Some(next) = p.bytes().nth(ip + 1) {
                         match next {
-                            b'*' => return Self::m(&s[is..], &p[ip + 1..]),
+                            b'*' => {
+                                ip += 1;
+                                continue;
+                            }
                             ch @ b'a'..=b'z' => {
                                 for i in is..s.len() {
                                     if s.bytes().nth(i).unwrap() == ch {
@@ -77,7 +80,9 @@ mod test {
     #[test]
     fn is_match5() {
         assert_eq!(
-            Solution::is_match(String::from("abbabaaabbabbaababbabbbbbabbbabbbabaaaaababababbbabababaabbababaabbbbbbaaaabababbbaabbbbaabbbbababababbaabbaababaabbbababababbbbaaabbbbbabaaaabbababbbbaababaabbababbbbbababbbabaaaaaaaabbbbbaabaaababaaaabb"), String::from("**aa*****ba*a*bb**aa*ab****a*aaaaaa***a*aaaa**bbabb*b*b**aaaaaaaaa*a********ba*bbb***a*ba*bb*bb**a*b*bb")),
+            Solution::is_match(
+                String::from("abbabaaabbabbaababbabbbbbabbbabbbabaaaaababababbbabababaabbababaabbbbbbaaaabababbbaabbbbaabbbbababababbaabbaababaabbbababababbbbaaabbbbbabaaaabbababbbbaababaabbababbbbbababbbabaaaaaaaabbbbbaabaaababaaaabb"),
+                String::from("**aa*****ba*a*bb**aa*ab****a*aaaaaa***a*aaaa**bbabb*b*b**aaaaaaaaa*a********ba*bbb***a*ba*bb*bb**a*b*bb")),
             true
         );
     }
