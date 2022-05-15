@@ -81,4 +81,6 @@ mod trapping_rain_water;
 
 mod multiply_strings;
 
+mod wildcard_matching;
+
 fn main() {}
