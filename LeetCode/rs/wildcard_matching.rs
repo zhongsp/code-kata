@@ -46,7 +46,9 @@ impl Solution {
                             ch @ b'a'..=b'z' => {
                                 for i in is..s.len() {
                                     if s.bytes().nth(i).unwrap() == ch {
-                                        if Self::m(&s[i..], &p[ip + 1..]) {
+                                        let ss = if i + 1 >= s.len() { "" } else { &s[i + 1..] };
+                                        let pp = if ip + 2 >= p.len() { "" } else { &p[ip + 2..] };
+                                        if Self::m(ss, pp) {
                                             return true;
                                         }
                                     }
