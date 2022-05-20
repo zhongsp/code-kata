@@ -12,18 +12,19 @@ impl Solution {
                 let mut ans = vec![];
                 let mut nums = nums;
                 for _ in 0..nums.len() {
-                    let mut subnums = nums.clone();
-                    subnums.remove(0);
+                    let fixed = nums.remove(0);
+                    let subnums = nums.clone();
+
+                    nums.push(fixed);
+
                     let sub: Vec<Vec<i32>> = Self::permute(subnums)
                         .into_iter()
                         .map(|mut v| {
-                            v.insert(0, nums[0]);
+                            v.insert(0, fixed);
                             v
                         })
                         .collect();
                     ans.extend(sub);
-                    let val = nums.remove(0);
-                    nums.push(val);
                 }
 
                 ans

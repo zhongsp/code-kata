@@ -32,7 +32,33 @@ mod test {
 
     #[test]
     fn test_str_str0() {
-        let actual = Solution::str_str(String::from("abcd"), String::from("c"));
-        println!("{}", actual);
+        assert_eq!(
+            Solution::str_str(String::from("abcd"), String::from("c")),
+            2
+        );
+    }
+
+    #[test]
+    fn test_str_str1() {
+        assert_eq!(
+            Solution::str_str(String::from("abcd"), String::from("d")),
+            3
+        );
+    }
+
+    #[test]
+    fn test_str_str2() {
+        assert_eq!(
+            Solution::str_str(String::from("abcd"), String::from("ab")),
+            0
+        );
+    }
+
+    #[test]
+    fn test_str_str3() {
+        assert_eq!(
+            Solution::str_str(String::from("abcd"), String::from("da")),
+            -1
+        );
     }
 }
