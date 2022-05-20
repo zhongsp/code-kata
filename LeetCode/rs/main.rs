@@ -87,4 +87,6 @@ mod jump_game_ii;
 
 mod permutations;
 
+mod permutations_ii;
+
 fn main() {}
