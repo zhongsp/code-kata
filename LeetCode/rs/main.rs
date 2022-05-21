@@ -89,4 +89,6 @@ mod permutations;
 
 mod permutations_ii;
 
+mod rotate_image;
+
 fn main() {}
