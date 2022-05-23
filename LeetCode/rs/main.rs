@@ -93,4 +93,6 @@ mod rotate_image;
 
 mod group_anagrams;
 
+mod powx_n;
+
 fn main() {}
