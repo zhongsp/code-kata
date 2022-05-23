@@ -89,6 +89,8 @@ mod permutations;
 
 mod permutations_ii;
 
+mod rotate_image;
+
 mod group_anagrams;
 
 fn main() {}
