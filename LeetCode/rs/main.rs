@@ -95,4 +95,6 @@ mod group_anagrams;
 
 mod powx_n;
 
+mod univalued_binary_tree;
+
 fn main() {}
