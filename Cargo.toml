@@ -9,5 +9,9 @@ edition = "2021"
 
 # https://doc.rust-lang.org/cargo/reference/cargo-targets.html?highlight=%5B%5Bbin%5D%5D#configuring-a-target
 [[bin]]
-name = "leetcode"
-path = "LeetCode/rs/main.rs"
+name = "leetcode1"
+path = "LeetCode/rs/1-50/main.rs"
+
+[[bin]]
+name = "leetcode2"
+path = "LeetCode/rs/51-100/main.rs"
