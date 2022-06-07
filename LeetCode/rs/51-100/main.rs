@@ -6,4 +6,6 @@ mod spiral_matrix;
 
 mod jump_game;
 
+mod merge_intervals;
+
 fn main() {}
