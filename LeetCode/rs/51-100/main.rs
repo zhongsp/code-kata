@@ -8,4 +8,6 @@ mod jump_game;
 
 mod merge_intervals;
 
+mod valid_boomerang;
+
 fn main() {}
