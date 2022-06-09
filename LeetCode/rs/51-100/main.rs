@@ -10,4 +10,6 @@ mod merge_intervals;
 
 mod valid_boomerang;
 
+mod insert_interval;
+
 fn main() {}
