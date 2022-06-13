@@ -12,4 +12,8 @@ mod valid_boomerang;
 
 mod insert_interval;
 
+mod length_of_last_word;
+
+mod height_checker;
+
 fn main() {}
