@@ -6,7 +6,7 @@ struct Solution;
 impl Solution {
     pub fn generate_matrix(n: i32) -> Vec<Vec<i32>> {
         let total = n * n;
-        let mut ans: Vec<Vec<i32>> = (0..n).map(|_| Vec::with_capacity(n as usize)).collect();
+        let mut ans: Vec<Vec<i32>> = (0..n).map(|_| vec![0; n as usize]).collect();
 
         let mut lastx = 0;
         let mut lasty = 0;
