@@ -18,4 +18,6 @@ mod height_checker;
 
 mod spiral_matrix_ii;
 
+mod permutation_sequence;
+
 fn main() {}
