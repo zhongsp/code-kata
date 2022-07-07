@@ -20,4 +20,6 @@ mod spiral_matrix_ii;
 
 mod permutation_sequence;
 
+mod rotate_list;
+
 fn main() {}
