@@ -40,9 +40,11 @@ impl Solution {
             return head;
         }
 
+        let k = len - k;
+
         let mut head = head;
         let mut ans = &mut head;
-        for _ in 0..=k {
+        for _ in 0..k {
             ans = &mut ans.as_mut().unwrap().next;
         }
 
