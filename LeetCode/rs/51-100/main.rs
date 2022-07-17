@@ -22,4 +22,6 @@ mod permutation_sequence;
 
 mod rotate_list;
 
+mod unique_paths;
+
 fn main() {}
