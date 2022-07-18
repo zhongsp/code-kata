@@ -10,13 +10,21 @@ struct Solution;
 #[allow(dead_code)]
 impl Solution {
     pub fn unique_paths(m: i32, n: i32) -> i32 {
+        // m = 3, n = 7
+        // m = 3, n = 6 + m = 2, n = 7
+
+        // m = 1, n = ? -> 1
+        // m = ?, n = 1 -> 1
+    }
+
+    pub fn unique_paths_bad_perf(m: i32, n: i32) -> i32 {
         let mut ans = 0;
         let max_right = (m - 1) as u32;
         let max_down = (n - 1) as u32;
         let mut nodes = vec![Node { right: 0, down: 0 }];
 
         if max_right == 0 && max_down == 0 {
-          return 1;
+            return 1;
         }
 
         loop {
