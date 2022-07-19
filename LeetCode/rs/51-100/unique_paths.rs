@@ -1,5 +1,7 @@
 //! https://leetcode.cn/problems/unique-paths/
 
+use std::collections::HashMap;
+
 pub struct Node {
     right: u32,
     down: u32,
@@ -10,11 +12,36 @@ struct Solution;
 #[allow(dead_code)]
 impl Solution {
     pub fn unique_paths(m: i32, n: i32) -> i32 {
-        // m = 3, n = 7
-        // m = 3, n = 6 + m = 2, n = 7
+        let mut cache = HashMap::new();
+        Self::calc(m, n, &mut cache)
+    }
 
-        // m = 1, n = ? -> 1
-        // m = ?, n = 1 -> 1
+    fn calc(m: i32, n: i32, cache: &mut HashMap<(i32, i32), i32>) -> i32 {
+        if m == 1 || n == 1 {
+            1
+        } else {
+            if let Some(&val) = cache.get(&(m, n)) {
+                val
+            } else {
+                let x: i32;
+                if let Some(&val) = cache.get(&(m - 1, n)) {
+                    x = val;
+                } else {
+                    x = Self::calc(m - 1, n, cache);
+                    cache.insert((m - 1, n), x);
+                }
+
+                let y: i32;
+                if let Some(&val) = cache.get(&(m, n - 1)) {
+                    y = val;
+                } else {
+                    y = Self::calc(m, n - 1, cache);
+                    cache.insert((m, n - 1), y);
+                }
+
+                x + y
+            }
+        }
     }
 
     pub fn unique_paths_bad_perf(m: i32, n: i32) -> i32 {
@@ -77,6 +104,11 @@ mod test {
 
     #[test]
     fn t2() {
-        assert_eq!(Solution::unique_paths(23, 12), 3);
+        assert_eq!(Solution::unique_paths(23, 12), 193536720);
+    }
+
+    #[test]
+    fn t3() {
+        assert_eq!(Solution::unique_paths(51, 9), 1916797311);
     }
 }
