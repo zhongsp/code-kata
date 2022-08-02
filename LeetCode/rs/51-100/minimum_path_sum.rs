@@ -8,21 +8,27 @@ impl Solution {
         let m = grid.len();
         let n = grid[0].len();
 
-        let mut f = vec![vec![i32::MAX; n + 1]; m + 1];
+        let mut f = vec![vec![i32::MAX; n]; m];
 
-        f[1][1] = grid[0][0];
+        f[0][0] = grid[0][0];
 
-        for mi in 1..=m {
-            for ni in 1..=n {
-                if mi == 1 && ni == 1 {
+        for mi in 0..m {
+            for ni in 0..n {
+                if mi == 0 && ni == 0 {
                     continue;
+                } else if mi == 0 {
+                    f[mi][ni] = f[mi][ni - 1];
+                } else if ni == 0 {
+                    f[mi][ni] = f[mi - 1][ni];
+                } else {
+                    f[mi][ni] = i32::min(f[mi - 1][ni], f[mi][ni - 1]);
                 }
 
-                f[mi][ni] = i32::min(f[mi - 1][ni], f[mi][ni - 1]) + grid[mi - 1][ni - 1];
+                f[mi][ni] += grid[mi][ni];
             }
         }
 
-        f[m][n]
+        f[m - 1][n - 1]
     }
 }
 
