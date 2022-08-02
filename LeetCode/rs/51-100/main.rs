@@ -26,4 +26,6 @@ mod unique_paths;
 
 mod teemo_attacking;
 
+mod minimum_path_sum;
+
 fn main() {}
