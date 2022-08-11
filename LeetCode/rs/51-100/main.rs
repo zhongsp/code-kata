@@ -30,4 +30,6 @@ mod minimum_path_sum;
 
 mod valid_number;
 
+mod simplify_path;
+
 fn main() {}
