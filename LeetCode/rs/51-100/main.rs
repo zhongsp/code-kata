@@ -34,4 +34,6 @@ mod simplify_path;
 
 mod plus_one;
 
+mod add_binary;
+
 fn main() {}
