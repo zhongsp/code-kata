@@ -32,4 +32,6 @@ mod valid_number;
 
 mod simplify_path;
 
+mod plus_one;
+
 fn main() {}
