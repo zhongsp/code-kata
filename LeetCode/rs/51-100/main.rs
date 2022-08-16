@@ -36,4 +36,6 @@ mod plus_one;
 
 mod add_binary;
 
+mod text_justification;
+
 fn main() {}
