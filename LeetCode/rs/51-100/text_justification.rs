@@ -17,22 +17,22 @@ impl Solution {
             let new_len = if total_len == 0 {
                 words[i].len()
             } else {
-                total_len + words[i].len() + (count - 1)
+                total_len + words[i].len() + count - 1
             };
 
             if new_len as i32 <= max_width {
                 total_len += words[i].len();
                 count += 1;
-
-                if i == words.len() - 1 {
-                    segs.push((start, count));
-                }
             } else {
                 segs.push((start, count));
 
                 start = i;
-                count = 0;
-                total_len = 0;
+                count = 1;
+                total_len = words[i].len();
+            }
+
+            if i == words.len() - 1 {
+                segs.push((start, count));
             }
         }
 
@@ -58,6 +58,24 @@ mod test {
                     "of".to_string(),
                     "text".to_string(),
                     "justification.".to_string()
+                ],
+                16
+            ),
+            vec!["text".to_string()]
+        );
+    }
+
+    #[test]
+    fn t1() {
+        assert_eq!(
+            Solution::full_justify(
+                vec![
+                    "What".to_string(),
+                    "must".to_string(),
+                    "be".to_string(),
+                    "acknowledgment".to_string(),
+                    "shall".to_string(),
+                    "be".to_string()
                 ],
                 16
             ),
