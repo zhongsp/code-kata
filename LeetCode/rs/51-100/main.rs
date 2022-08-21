@@ -38,4 +38,6 @@ mod add_binary;
 
 mod text_justification;
 
+mod sqrtx;
+
 fn main() {}
