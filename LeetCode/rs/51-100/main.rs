@@ -40,4 +40,6 @@ mod text_justification;
 
 mod sqrtx;
 
+mod climbing_stairs;
+
 fn main() {}
