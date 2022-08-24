@@ -42,4 +42,6 @@ mod sqrtx;
 
 mod climbing_stairs;
 
+mod bianjijuli;
+
 fn main() {}
