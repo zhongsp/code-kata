@@ -44,4 +44,6 @@ mod climbing_stairs;
 
 mod bianjijuli;
 
+mod search_a_2d_matrix;
+
 fn main() {}
