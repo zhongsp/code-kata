@@ -48,4 +48,6 @@ mod search_a_2d_matrix;
 
 mod sort_colors;
 
+mod combinations;
+
 fn main() {}
