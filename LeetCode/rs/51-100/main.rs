@@ -50,4 +50,6 @@ mod sort_colors;
 
 mod combinations;
 
+mod word_search;
+
 fn main() {}
