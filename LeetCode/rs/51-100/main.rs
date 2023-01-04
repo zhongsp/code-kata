@@ -52,4 +52,6 @@ mod combinations;
 
 mod word_search;
 
+mod remove_duplicates_from_sorted_array_ii;
+
 fn main() {}
