@@ -54,4 +54,6 @@ mod word_search;
 
 mod remove_duplicates_from_sorted_array_ii;
 
+mod search_in_rotated_sorted_array_ii;
+
 fn main() {}
