@@ -56,4 +56,6 @@ mod remove_duplicates_from_sorted_array_ii;
 
 mod search_in_rotated_sorted_array_ii;
 
+mod remove_duplicates_from_sorted_list;
+
 fn main() {}
